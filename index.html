@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Febrian Rizki Pratama // Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #030712;
+      --panel-bg: rgba(15, 23, 42, 0.7);
+      --neon-cyan: #00f0ff;
+      --neon-purple: #b026ff;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border-glow: rgba(0, 240, 255, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Futuristic Cyber Grid Background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: 
+        linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -1;
+    }
+
+    /* Ambient Glow Effects */
+    .glow-sphere {
+      position: fixed;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0,240,255,0.15) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+      z-index: -1;
+      filter: blur(50px);
+    }
+
+    .glow-sphere-2 {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(176,38,255,0.12) 0%, transparent 70%);
+      bottom: -150px;
+      left: -150px;
+      z-index: -1;
+      filter: blur(60px);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    /* Futuristic Header / Hero Section */
+    .hero-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-glow);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 4px; height: 100%;
+      background: linear-gradient(to bottom, var(--neon-cyan), var(--neon-purple));
+    }
+
+    .avatar-box {
+      width: 140px;
+      height: 140px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(0,240,255,0.2), rgba(176,38,255,0.2));
+      border: 2px solid var(--neon-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fira Code', monospace;
+      font-size: 2rem;
+      color: var(--neon-cyan);
+      box-shadow: inset 0 0 15px rgba(0,240,255,0.3);
+      flex-shrink: 0;
+    }
+
+    .hero-info h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.3rem;
+      background: linear-gradient(90deg, #fff, var(--neon-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .status-badge {
+      display: inline-block;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      color: var(--neon-cyan);
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+
+    .hero-info p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    /* Grid Layout */
+    .grid-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--panel-bg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 240, 255, 0.05);
+    }
+
+    .card h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--neon-cyan);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .card h2 span {
+      color: var(--neon-purple);
+    }
+
+    /* List Details */
+    .details-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .details-list li {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .details-list strong {
+      color: var(--text-main);
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+    }
+
+    /* Skills Container */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .skill-tag {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      background: rgba(176, 38, 255, 0.1);
+      color: #e2e8f0;
+      border: 1px solid rgba(176, 38, 255, 0.3);
+      padding: 0.4rem 0.9rem;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .skill-tag:hover {
+      background: rgba(176, 38, 255, 0.25);
+      border-color: var(--neon-purple);
+      color: #fff;
+    }
+
+    /* Project items */
+    .project-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-item h3 {
+      font-size: 1rem;
+      color: var(--text-main);
+      margin-bottom: 0.3rem;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .project-item p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--text-muted);
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      margin-top: 1rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1.5rem;
+      }
+      .hero-info h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-sphere"></div>
+  <div class="glow-sphere-2"></div>
+
+  <div class="container">
+    
+    <!-- Hero / Profile Section -->
+    <header class="hero-card">
+      <div class="avatar-box">
+        FR,P
+      </div>
+      <div class="hero-info">
+        <div class="status-badge">&gt; SYSTEM_ONLINE // 1TH_SEMESTER</div>
+        <h1>FEBRIAN RIZKI PRATAMA</h1>
+        <p>Software Engineering Student at Politeknik Indonusa Surakarta. Passionate about exploring advanced code logic, futuristic UI design, and building immersive web experiences.</p>
+      </div>
+    </header>
+
+    <!-- Main Grid Content -->
+    <main class="grid-layout">
+      
+      <!-- Academic Profile -->
+      <section class="card">
+        <h2><span>01.</span> PROFILE_DATA</h2>
+        <ul class="details-list">
+          <li><strong>Full Name:</strong> Febrian Rizki Pratama</li>
+          <li><strong>Major:</strong> Software Engineering (RPL)</li>
+          <li><strong>Academic Year:</strong> 1st Semester</li>
+          <li><strong>Institution:</strong> Politeknik Indonusa Surakarta</li>
+        </ul>
+      </section>
+
+      <!-- Technical Skills -->
+      <section class="card">
+        <h2><span>02.</span> CORE_SKILLS</h2>
+        <div class="skills-grid">
+          <span class="skill-tag">HTML5</span>
+          <span class="skill-tag">CSS3</span>
+          <span class="skill-tag">JavaScript (ES6+)</span>
+          <span class="skill-tag">UI/UX Design</span>
+          <span class="skill-tag">Git & GitHub</span>
+          <span class="skill-tag">Responsive Layouts</span>
+          <span class="skill-tag">Logic & Algorithms</span>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section class="card" style="grid-column: 1 / -1;">
+        <h2><span>03.</span> FEATURED_PROJECTS</h2>
+        <div class="grid-layout" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 0.5rem;">
+          
+          <div class="project-item">
+            <h3>Cybernetic Portfolio v1</h3>
+            <p>Developed a high-performance personal web profile utilizing modern HTML5, CSS3 Grid/Flexbox, and smooth futuristic visual styling.</p>
+          </div>
+
+          <div class="project-item">
+            <h3>Interactive Web Component</h3>
+            <p>Built dynamic, high-quality interactive interface elements utilizing vanilla JavaScript to enhance user experience and page responsiveness.</p>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2026 FEBRIAN RIZKI PRATAMA. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
